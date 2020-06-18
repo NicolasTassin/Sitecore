@@ -17,7 +17,7 @@ const AppBody = styled.div`
   text-align: center;
   display: flex;
   justify-content: space-around;
-  margin: 10% 10%;
+  margin: 10% 0;
 
 `
 

@@ -5,7 +5,7 @@ import React from 'react'
 
 const Header = () => {
     return(
-        <h1>Header</h1>
+        <h1>Fantastic Chamber</h1>
     )
 }
 

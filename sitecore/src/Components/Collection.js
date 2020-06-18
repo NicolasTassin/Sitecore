@@ -2,24 +2,28 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { getCollectionsAsync, getAssetsAsync } from '../data'
 import Asset from './Assets'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 
 const MainContainer = styled.div`
     width: 70%;
     display:flex;
     justify-content:space-between;
-    ul{
-        list-style:none;
+    .collection{
+        height:260px;
         display:flex;
-        flex-direction:column;
-        border:1px solid black;
-        
-        
-        li{
+        border-radius: 5px;
+        box-shadow:2px 2px 2px gray;
+        :hover{
+            cursor: pointer;
+            box-shadow:none;
+            transform:translateX(-10px);
+            
             
         }
     }
-
+    
+   
 `
 
 
@@ -91,11 +95,11 @@ const Collection = () => {
     }
 
     const CollectionItem = collectionList.length && collectionList.map((elem, index) => (
-        <li key={index} onClick={() => handleClick(index)} >
-            <img src={`/images/${assetsList.length && assetsList.find((a) => a.id === mainAsset[index]).path}`} width={'100px'} alt=''></img>
-            {elem.name}
-            {elem.masterAssetId}
-        </li>
+        <ListGroup.Item key={index} onClick={() => handleClick(index)} className='collection mt-3'>
+            <img src={`/images/${assetsList.length && assetsList.find((a) => a.id === mainAsset[index]).path}`}   alt=''></img>
+            <h1>{elem.name}</h1>
+            
+        </ListGroup.Item>
 
 
     ))
@@ -108,7 +112,7 @@ const Collection = () => {
         <MainContainer>
             <CollectionContainer>
                 <h1>Collections</h1>
-                <ul>{CollectionItem}</ul>
+                <ListGroup>{CollectionItem}</ListGroup>
             </CollectionContainer>
             <Asset
                 collectionSelected={collectionSelected}
